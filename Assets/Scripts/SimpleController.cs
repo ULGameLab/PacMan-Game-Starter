@@ -57,10 +57,16 @@ public class SimpleController : MonoBehaviour
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
 
-        if(Input.GetKey (KeyCode.LeftShift) && groundedPlayer){
+        if(Input.GetKey (KeyCode.LeftShift) && groundedPlayer)
+        {
             animator.SetBool ("Sliding", true);
-        }else{
+            controller.height = 0.9f;
+            controller.center = new Vector3(0, 0.45f, 0);
+        }else
+        {
             animator.SetBool ("Sliding", false);
+            controller.height = 1.8f;
+            controller.center = new Vector3(0, 0.9f, 0);
         }
     }
 }
